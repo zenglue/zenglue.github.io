@@ -1,0 +1,53 @@
+---
+layout: post
+title:  "**CLI Data Gem**"
+date:   2016-10-01 19:36:52 +0000
+---
+
+
+Learn.co's Obect Orientation Labs culminates in a final project that requires building a CLI Gem that either utilizes the Nokogiri Gem or a Public API to scrape data from a url, parse it and finally bundle this data into a Gem where an end user can interact with the data through a Command Line Interface.  
+
+Let me start off by saying that this, like the rest of the curriculim at Learn.co, was challenging.  Like really difficult, especially for a young coding grasshopper like myself who has yet to fully realize his coding fu.  Did I say it was hard?
+
+**The CLI Data Gem Project has four requirements:**
+
+> 1. Package as a gem.
+> 2. Provide a CLI on gem installation.
+> 3. CLI must provide data from an external source, whether scraped or via a public API.
+> 4. Data provided must go at least a level deep, generally by showing the user a list of available data and then being able to drill into a specific item.
+
+Nice.  "We can do this." I thought to myself.  From this point on, the experiance was fustrating a great deal of the time, exposed my weaknesses in coding comprehension and was ultimately humbling.  Did I actually learn (that's rhetorical)?  But hey, I have a Gem now that I built from scratch; my first real code object built without training wheels.  
+
+For the CLI Gem project, I chose to use the [Nokogiri Gem](https://rubygems.org/gems/nokogiri/versions/1.6.8http://) to scrape data rather than a Public API, as I am not at all familiar with API's at the moment and had a little experiance using Nokogiri from previous Learn.co Labs.  I wanted the URL I scraped to have a socio-political aspect to it that was relevant to current events shaping our world today.  I believe that the objects that we put into the world, whether they be code objects on the inter-webs or objects that we put in the art gallery spaces that I am more familiar with, are inherently political whether we  would like them to be or not.  These objects are a statement about our world and how we, as the creator of these objects, relate to the world.  These objects whether material or immaterial are a form of personal expression, that in it's small way, influences that world they are instantiated in.  I'm not sure if a butterfly beating it's wings in the rainforest can cause a hurricane 2000 miles away, but I am sure that the things we create as builders, as tinkerers, as artists, as musicians, as writers and code programmers influence us either on a personal level or an interpersonal level when an audience or end user interacts with our creations.  This in turn, spins the world in one incremental revolution.  A bit trite at this point, but still true: the personal* is* political.
+
+**The Process:
+**
+
+When choosing a website to scrape, I immediately gravitated towards [The Counted](https://www.theguardian.com/us-news/ng-interactive/2015/jun/01/the-counted-police-killings-us-databasehttp://): a database of victims of police violence in America.  First mistake.  I made the repo for this project and started some code and used Nokogiri to start finding the css selectors I would need to scrape the The Counted.  A couple hours in, I realized that much of the content on The Counted relies on Java hooks.  Unbeknownst to me when I began, Nokogiri can only parse HTML not Java.  After some googling (an example here of how code influences our socio-political-cultural sphere) I discovered  [watir](https://rubygems.org/gems/watir/versions/5.0.0http://), a Gem that allows you to scrape data from Java sites.  Being the underachieving but overly ambitious person that I am, I said "Sure, why not just learn watir and incorporate this Gem into the project."  Given the time constraints of this project, and Learn.co's relentless deadlines (albeit flexible ones), I had to abandon learning watir and The Counted.  While The Counted is a beautiful site and probably doesn't need any additonal functionality that some seperate program might provide;  watir, you and I will meet again.  This led me on a search through many sites that while interesting to me, either did not fit the criteria for this project or again, used Java (damn you Java and your pretty sites).  Then I discovered: [http://immigrants.mndigital.org/exhibits/show/immigrantstories-exhibit/page01](http://), a site exhibiting immigration stories of Minnesota residents.  This site was meaningful to me because my family when we first immigrated to The States, first settled in Minnesota.  Had it not been for a very compassionate family in Minnesota who sponsered us, my family back in the early '80s, would have remained on a dry patch of dirt surrounded by razor wire outside of Bangkok that was inadequetly named a "refugee camp".  Many of these immigration stories on this site are in fact by Cambodians, my ethnic heritage. 
+
+Finally, I had a site that fit the criteria, I could actually parse using Nokogiri and I actually found meaningful.  At this point I sifted through enough sites for css selectors, that finding the css selectors I needed to build into the CLI Gem were retrieved fairly quickly.  Getting the rest of the code together was a different matter.  The first iterations of my code involved scraping the url's and individual names of immigrants from the index page and from there grabbing their stories and addtional data from the personal url's to build into the Gem.  Using this methodology, I would have to instantiate each immigrant name at the same time as I scraped their url so that those two pieces of data would be associated with each other.  I spent hours, running on a heavy sleep deficit, trying to think logically about how I could do this; all to no avail.  I could grab the names and urls easily enough but associating each name to a url at the time of instantiation was simply beyond my coding talents or at this point, very mushy marshmallow brain.  A Learn instructor gave me a hint of establishing a counter and then as the code iterated though the names from the site's css selectors using #map(&text) incrementing the counter by 1 as the code iterated through the the personal url's css selectors also using #map.  While this would have worked, I just coundn't get the syntax correct.   This however led me in the right direction and I realized I could use #each.with_index so that as each new immigrant object was instantiated the code could assign an instance of name in an @@all array to associate a profile url with an index by way of a variable that scraped and #map'ed the profile url's:
+
+`index_array.each_with_index {|name, i| @@all[name] = profile_urls[i]}`
+
+Bingo.  Sort of.  I still had the issue of assigning Immigrant attributes pulled from the profile url's.  I could create an @@all hash in my cli.rb, call on an dreamer instantiation method also from cli.rb that utilized the above code from immingrant.rb to further call on a scraper.rb method that pulled scraped attributes hash and assign attribute hashes to my name and profile array  also using an #each.with_index and pushing all this into the @@all hash in cli.rb.  This sounded chunky and obtuse, just like that sentence I just wrote. And way more complicated then it needed to be. While killing way too much time trying to work through this syntax, logic and not even being sure if my logic was on point, I honestly was not pushing code revisions to git as the project specified, because I was so fustrated and at this point running on fumes.  I was maxed out.  I decided I needed a break and went for a walk.  And during this walk it all crystallized.  What was I doing?  The names of each immigrant were all in their profile pages. All I needed to do was #map the profile urls to an @all array and  at the time of a new Immigrant instantiation assign the hash of immigrant attributes which all ready included the :name hash data I needed.  Face palm.  No more weird nesting at the time of Immigrant instantiation and no more chunky #.each.with_index.  The rest of the code came together rather quickly, compared to how long I had spent prior to this point.  Sometimes the most elegant solution and by elegant, I mean comprehensible by a coding grasshopper, can stare at you in the face the whole time.  Young grasshopper meets the path of least resistance.  
+
+If you would like to explore my code for this Gem further please go to [Immigrant Stories Gem](https://github.com/zenglue/immigrant_stories_gem)
+
+**Final Thoughts**
+
+This project really hammered in Flatiron School's emphasis on test driven development.  With no rspec.rb to rely on as in pervious labs and not enough knowledge yet to write my oen rspec.rb, it felt like I was driving blind.  But in a way this was nice as it allowed my to think about the data that was scraped abstractly.  How do I want to model this data?  How can the code logic in the Gem influence how this data is modeled?  For example, given enough time, I probably would have built the stories in my code as it's own Object(class Story) rather than an attrubute of an immigrant, given the signifigance of these stories are to the final Gem and how the Gem is really about reading these individual stories.  On a more macro level, I began to think about just how the data we are exposed to every day is influenced by how its modeled and coded on the back end.  It's something to ponder during this election cycle as we are bombarded by different polls and statistics. 
+
+If you take a closer look at the code I've written for the Gem, you'll notice that I call a new instance of immigrants: 
+
+```
+class Dreamer
+```
+
+This was a personal form of expression on my part and exposes some of my political beliefs.  While it doesn't change the data that is presented to the end user, for me it adds an additional layer of interest in the coding process and how the language we use in our code doesn't have to be blunt or obscure; the language we use in coding can have it's own specific context and meaning that exists outside out of our code blocks.  In this particular instance, "This is not a pipe", for those of you who are familiar with the Magritte painting, does not hold true.  Sometimes Object names, isolated even from whatever attributes we may assign these Objects, can have a meaning of their own.  Language and the words we use, have their own history and power and for me, its something to contemplate as I try to cram more code patterns into the pattern array that exists in the soft computer of my skull (which is itself, just a computer case built from calcium crystal structures).  The // to mindful effortless coding continues...
+
+
+
+
+
+
+
