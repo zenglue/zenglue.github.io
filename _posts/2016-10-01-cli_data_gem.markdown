@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "**CLI Data Gem**"
-date:   2016-10-01 19:36:52 +0000
+date:   2016-10-01 15:36:52 -0400
 ---
 
 
@@ -20,8 +20,7 @@ Nice.  "We can do this." I thought to myself.  From this point on, the experianc
 
 For the CLI Gem project, I chose to use the [Nokogiri Gem](https://rubygems.org/gems/nokogiri/versions/1.6.8http://) to scrape data rather than a Public API, as I am not at all familiar with API's at the moment and had a little experiance using Nokogiri from previous Learn.co Labs.  I wanted the URL I scraped to have a socio-political aspect to it that was relevant to current events shaping our world today.  I believe that the objects that we put into the world, whether they be code objects on the inter-webs or objects that we put in the art gallery spaces that I am more familiar with, are inherently political whether we  would like them to be or not.  These objects are a statement about our world and how we, as the creator of these objects, relate to the world.  These objects whether material or immaterial are a form of personal expression, that in it's small way, influences that world they are instantiated in.  I'm not sure if a butterfly beating it's wings in the rainforest can cause a hurricane 2000 miles away, but I am sure that the things we create as builders, as tinkerers, as artists, as musicians, as writers and code programmers influence us either on a personal level or an interpersonal level when an audience or end user interacts with our creations.  This in turn, spins the world in one incremental revolution.  A bit trite at this point, but still true: the personal* is* political.
 
-**The Process:
-**
+**The Process**
 
 When choosing a website to scrape, I immediately gravitated towards [The Counted](https://www.theguardian.com/us-news/ng-interactive/2015/jun/01/the-counted-police-killings-us-databasehttp://): a database of victims of police violence in America.  First mistake.  I made the repo for this project and started some code and used Nokogiri to start finding the css selectors I would need to scrape the The Counted.  A couple hours in, I realized that much of the content on The Counted relies on Java hooks.  Unbeknownst to me when I began, Nokogiri can only parse HTML not Java.  After some googling (an example here of how code influences our socio-political-cultural sphere) I discovered  [watir](https://rubygems.org/gems/watir/versions/5.0.0http://), a Gem that allows you to scrape data from Java sites.  Being the underachieving but overly ambitious person that I am, I said "Sure, why not just learn watir and incorporate this Gem into the project."  Given the time constraints of this project, and Learn.co's relentless deadlines (albeit flexible ones), I had to abandon learning watir and The Counted.  While The Counted is a beautiful site and probably doesn't need any additonal functionality that some seperate program might provide;  watir, you and I will meet again.  This led me on a search through many sites that while interesting to me, either did not fit the criteria for this project or again, used Java (damn you Java and your pretty sites).  Then I discovered: [http://immigrants.mndigital.org/exhibits/show/immigrantstories-exhibit/page01](http://), a site exhibiting immigration stories of Minnesota residents.  This site was meaningful to me because my family when we first immigrated to The States, first settled in Minnesota.  Had it not been for a very compassionate family in Minnesota who sponsered us, my family back in the early '80s, would have remained on a dry patch of dirt surrounded by razor wire outside of Bangkok that was inadequetly named a "refugee camp".  Many of these immigration stories on this site are in fact by Cambodians, my ethnic heritage. 
 
