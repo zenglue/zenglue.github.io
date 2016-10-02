@@ -32,7 +32,7 @@ Bingo.  Sort of.  I still had the issue of assigning Immigrant attributes pulled
 
 If you would like to explore my code for this Gem further please go to [Immigrant Stories Gem](https://github.com/zenglue/immigrant_stories_gem)
 
-![]([URL=http://i38.photobucket.com/albums/e120/zenglue/gem%20walkthrough_zpsukiur3dp.mp4][IMG]http://i38.photobucket.com/albums/e120/zenglue/th_gem%20walkthrough_zpsukiur3dp.mp4[/IMG][/URL])
+[](<embed width="600" height="361" type="application/x-shockwave-flash" allowFullscreen="true" allowNetworking="all" wmode="transparent" src="http://static.photobucket.com/player.swf" flashvars="file=http%3A%2F%2Fvid38.photobucket.com%2Falbums%2Fe120%2Fzenglue%2Fgem%2520walkthrough_zpsukiur3dp.mp4&title=">)
 
 **Final Thoughts**
 
