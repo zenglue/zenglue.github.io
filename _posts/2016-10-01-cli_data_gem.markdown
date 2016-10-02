@@ -32,6 +32,8 @@ Bingo.  Sort of.  I still had the issue of assigning Immigrant attributes pulled
 
 If you would like to explore my code for this Gem further please go to [Immigrant Stories Gem](https://github.com/zenglue/immigrant_stories_gem)
 
+![]([URL=http://i38.photobucket.com/albums/e120/zenglue/gem%20walkthrough_zpsukiur3dp.mp4][IMG]http://i38.photobucket.com/albums/e120/zenglue/th_gem%20walkthrough_zpsukiur3dp.mp4[/IMG][/URL])
+
 **Final Thoughts**
 
 This project really hammered in Flatiron School's emphasis on test driven development.  With no rspec.rb to rely on as in previous labs and not enough knowledge yet to write my own rspec.rb, it felt like I was driving blind (of course I still had 'pry' and the possiblitiy of editing in a puts "value_I_need" when appropriate).  But in a way this was nice as it allowed my to think about the data that was scraped and how to interpret it using logic blocks in an abstract manner.  How do I scaffold code snippets or logic across files in a way that encapsalutes that logic within it's own line of reasoning (isolating code based on logic sequence and expected behavior) and how do I integrate this into an Object Oriented architecture that is legible to the Ruby Interpretor?  This process felt familiar based on my visual arts background. It felt similar to how an artist might scaffold materials or elements of an object into a coherent whole; an object that ultimately (hopefully) conveys it's intended message.
