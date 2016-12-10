@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Four Muskeeters:"
-date:   2016-12-10 01:36:49 +0000
+date:   2016-12-09 20:36:49 -0500
 ---
 
 ## includes, joins, preload & eager_load
@@ -16,8 +16,8 @@ Rails uses four methods to load associated object data from ActiveRecord.  Using
  
 4. `joins`:  Also fires one query rocket to retrieve associated data with an `inner join`. It selects only the first table and uses an `inner join` to query the second table for associated data. In this case its able to grab attributes from the second table using a single line of query.
 
-**Using the following method:
-**
+**Using the following method:**
+
 ```
   def self.sailboats
     sub_query_method(:classifications).where("classification.name = ?", "Sailboat")
